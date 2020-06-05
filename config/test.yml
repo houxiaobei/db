@@ -1,0 +1,11 @@
+default: abc # 默认集群
+clusters:
+  abc: #集群名
+    dialect: mysql
+    master: root:@tcp(127.0.0.1:3306)/test?charset=utf8mb4&parseTime=True&loc=Local # 主库dsn ，详细文档 https://github.com/go-sql-driver/mysql
+    slaves: # 从库dsn，数组
+      - root:@tcp(127.0.0.1:3306)/test?charset=utf8mb4&parseTime=True&loc=Local
+      - root:@tcp(127.0.0.1:3306)/test?charset=utf8mb4&parseTime=True&loc=Local
+      - root:@tcp(127.0.0.1:3306)/test?charset=utf8mb4&parseTime=True&loc=Local
+    max_conn: 10 # 连接池 最大连接数
+    idel_conn: 5 # 连接池 闲置连接数
